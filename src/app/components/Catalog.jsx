@@ -112,7 +112,7 @@ if (error) return <StatusMessage type="error" message={error} />;
 
 return (
 <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-{/* Filters */}
+
 <aside className="lg:col-span-1 space-y-4">
 <div className="p-4 bg-white rounded-2xl shadow">
 <h2 className="font-semibold mb-3">Filters</h2>
@@ -127,3 +127,23 @@ max={priceCeiling}
 value={maxPrice}
 onChange={setMaxPrice}
 />
+</div>
+<CartSummary
+cart={cart}
+products={products}
+onDecrement={decrementFromCart}
+onReset={resetCart}
+/>
+</aside>
+
+
+<section className="lg:col-span-3">
+{filtered.length === 0 ? (
+<StatusMessage type="empty" />
+) : (
+<ProductList products={filtered} onAdd={addToCart} />
+)}
+</section>
+</div>
+);
+}

@@ -15,3 +15,10 @@ return { itemCount: count, total: sum };
 
 
 const entries = Object.entries(cart);
+
+return (
+<div className="p-4 bg-white rounded-2xl shadow">
+<h2 className="font-semibold mb-2">Cart</h2>
+<div className="text-sm text-gray-700 mb-3">Items: <strong>{itemCount}</strong> · Total: <strong>${total.toFixed(2)}</strong></div>
+
+

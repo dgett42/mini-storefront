@@ -43,3 +43,14 @@ className="px-2 py-1 rounded-lg border"
 })}
 </ul>
 )}
+
+<button
+onClick={onReset}
+disabled={entries.length === 0}
+className="mt-3 w-full rounded-xl px-3 py-2 border"
+>
+Reset Cart
+</button>
+</div>
+);
+}

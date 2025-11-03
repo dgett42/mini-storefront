@@ -50,3 +50,17 @@ const nextStock = Math.max(0, Math.min(50, p.stock + delta));
 return { ...p, stock: nextStock };
 }));
 
+}, 7000);
+return () => clearInterval(interval);
+}, [products.length]);
+
+
+const categories = useMemo(() => {
+const set = new Set(['All']);
+products.forEach(p => set.add(p.category));
+return Array.from(set);
+}, [products]);
+
+const priceCeiling = useMemo(() => (
+products.length ? Math.max(...products.map(p => p.price)) : 0
+), [products]);

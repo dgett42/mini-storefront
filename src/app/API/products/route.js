@@ -16,3 +16,4 @@ const products = [
 ];
 return Response.json(products);
 }
+

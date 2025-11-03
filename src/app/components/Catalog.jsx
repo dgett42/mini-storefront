@@ -94,8 +94,8 @@ return rest;
 return { ...prev, [id]: current - 1 };
 });
 
-setProducts(prev => prev.map(p => p.id === id ? { ...p, stock: p.stock + 1 } : p));
-};
+  setProducts(prev => prev.map(p => (p.id === id ? { ...p, stock: p.stock + 1 } : p)));
+  };
 
 
 const resetCart = () => {

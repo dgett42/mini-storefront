@@ -18,6 +18,7 @@ const [maxPrice, setMaxPrice] = useState('');
 
 const [cart, setCart] = useState({});
 
+useEffect(() => {
 let alive = true;
 (async () => {
 try {

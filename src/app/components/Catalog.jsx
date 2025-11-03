@@ -84,4 +84,15 @@ return { ...prev, [id]: qty };
 setProducts(prev => prev.map(p => p.id === id ? { ...p, stock: Math.max(0, p.stock - 1) } : p));
 };
 
+const decrementFromCart = (id) => {
+setCart(prev => {
+const current = prev[id] || 0;
+if (current <= 1) {
+const { [id]: _, ...rest } = prev;
+return rest;
+}
+return { ...prev, [id]: current - 1 };
+});
 
+setProducts(prev => prev.map(p => p.id === id ? { ...p, stock: p.stock + 1 } : p));
+};

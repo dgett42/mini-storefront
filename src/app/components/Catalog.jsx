@@ -64,3 +64,11 @@ return Array.from(set);
 const priceCeiling = useMemo(() => (
 products.length ? Math.max(...products.map(p => p.price)) : 0
 ), [products]);
+
+const filtered = useMemo(() => {
+return products.filter(p => {
+const catOk = category === 'All' || p.category === category;
+const priceOk = maxPrice === '' || p.price <= Number(maxPrice);
+return catOk && priceOk;
+});
+}, [products, category, maxPrice]);

@@ -97,8 +97,8 @@ return { ...prev, [id]: current - 1 };
 setProducts(prev => prev.map(p => p.id === id ? { ...p, stock: p.stock + 1 } : p));
 };
 
-const resetCart = () => {
 
+const resetCart = () => {
 setProducts(prev => prev.map(p => ({
 ...p,
 stock: p.stock + (cart[p.id] || 0)
@@ -106,3 +106,24 @@ stock: p.stock + (cart[p.id] || 0)
 setCart({});
 };
 
+if (loading) return <StatusMessage type="loading" />;
+if (error) return <StatusMessage type="error" message={error} />;
+
+
+return (
+<div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+{/* Filters */}
+<aside className="lg:col-span-1 space-y-4">
+<div className="p-4 bg-white rounded-2xl shadow">
+<h2 className="font-semibold mb-3">Filters</h2>
+<CategoryFilter
+categories={categories}
+value={category}
+onChange={setCategory}
+/>
+<div className="mt-4" />
+<PriceFilter
+max={priceCeiling}
+value={maxPrice}
+onChange={setMaxPrice}
+/>

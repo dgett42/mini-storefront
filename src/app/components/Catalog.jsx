@@ -38,3 +38,15 @@ alive = false;
 };
 }, []);
 
+useEffect(() => {
+if (!products.length) return;
+const interval = setInterval(() => {
+setProducts(prev => prev.map(p => {
+
+const roll = Math.random();
+let delta = 0;
+if (roll < 0.35) delta = -1; else if (roll > 0.8) delta = +1; 
+const nextStock = Math.max(0, Math.min(50, p.stock + delta));
+return { ...p, stock: nextStock };
+}));
+

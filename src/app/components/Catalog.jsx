@@ -81,4 +81,7 @@ const qty = (prev[id] || 0) + 1;
 return { ...prev, [id]: qty };
 });
 
-}
+setProducts(prev => prev.map(p => p.id === id ? { ...p, stock: Math.max(0, p.stock - 1) } : p));
+};
+
+

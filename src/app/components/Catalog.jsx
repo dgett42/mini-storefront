@@ -72,3 +72,13 @@ const priceOk = maxPrice === '' || p.price <= Number(maxPrice);
 return catOk && priceOk;
 });
 }, [products, category, maxPrice]);
+
+const addToCart = (id) => {
+setCart(prev => {
+const product = products.find(p => p.id === id);
+if (!product || product.stock === 0) return prev; 
+const qty = (prev[id] || 0) + 1;
+return { ...prev, [id]: qty };
+});
+
+}

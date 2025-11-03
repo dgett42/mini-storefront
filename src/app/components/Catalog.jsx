@@ -96,3 +96,13 @@ return { ...prev, [id]: current - 1 };
 
 setProducts(prev => prev.map(p => p.id === id ? { ...p, stock: p.stock + 1 } : p));
 };
+
+const resetCart = () => {
+
+setProducts(prev => prev.map(p => ({
+...p,
+stock: p.stock + (cart[p.id] || 0)
+})));
+setCart({});
+};
+
